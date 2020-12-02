@@ -1,9 +1,9 @@
 def part_1_answer(entries):
 
-    complements = {(2020 - n): n for n in entries}
+    values = set(entries)
 
     for n in entries:
-        if n in complements:
+        if (2020 - n) in values:
             return n * (2020 - n)
 
 
