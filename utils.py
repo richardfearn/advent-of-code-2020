@@ -14,9 +14,5 @@ def read_input(day):
     return text
 
 
-def read_input_line(day):
-    return read_input_lines(day)[0]
-
-
 def day_path(day):
     return Path(__file__).parent / f"day{day}" / "input.txt"
