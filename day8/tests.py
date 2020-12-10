@@ -16,6 +16,11 @@ jmp -4
 acc +6
 """
 
+UNCORRECTABLE_PROGRAM = """
+jmp 0
+jmp 0
+"""
+
 
 class Part1Tests(unittest.TestCase):
 
@@ -45,3 +50,8 @@ class Part2Tests(unittest.TestCase):
     def test_with_input(self):
         lines = utils.read_input_lines(8)
         self.assertEqual(day8.part_2(lines), 552)
+
+    def test_exception_is_raised_for_uncorrectable_program(self):
+        with self.assertRaises(Exception) as context:
+            day8.part_2(UNCORRECTABLE_PROGRAM)
+        self.assertEqual("infinite loop", str(context.exception))
