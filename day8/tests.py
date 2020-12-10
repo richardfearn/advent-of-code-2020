@@ -55,3 +55,16 @@ class Part2Tests(unittest.TestCase):
         with self.assertRaises(Exception) as context:
             day8.part_2(UNCORRECTABLE_PROGRAM)
         self.assertEqual("infinite loop", str(context.exception))
+
+
+class GraphvizTests(unittest.TestCase):
+
+    def test_graphviz_for_example(self):
+        day8.graphviz(EXAMPLE, "example")
+
+    def test_graphviz_for_input(self):
+        lines = utils.read_input_lines(8)
+        day8.graphviz(lines, "input")
+
+    def test_graphviz_for_uncorrectable(self):
+        day8.graphviz(UNCORRECTABLE_PROGRAM, "uncorrectable")

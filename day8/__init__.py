@@ -102,6 +102,34 @@ def undirected_graph(instructions):
     return graph
 
 
+def graphviz(instructions, filename):
+
+    instructions = parse(instructions)
+    graph = directed_graph(instructions)
+
+    with open(filename + ".gv", "w") as f:
+        print("digraph {", file=f)
+        for node in graph.keys():
+            print("    node%d [label=%d];" % (node, node), file=f)
+            for other in graph[node]:
+                print("    node%d -> node%d;" % (node, other), file=f)
+        print("}", file=f)
+
+
+def directed_graph(instructions):
+
+    graph = {pc: [] for pc in range(len(instructions))}
+
+    for pc, (op, arg) in enumerate(instructions):
+
+        next_pc = (pc + arg) if (op == JMP) else (pc + 1)
+
+        if next_pc < len(instructions):
+            graph[pc].append(next_pc)
+
+    return graph
+
+
 def find_instructions_that_will_terminate(instructions, subprograms):
 
     will_terminate = set()
