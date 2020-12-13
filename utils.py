@@ -32,3 +32,7 @@ def group_lines(lines):
             groups[-1].append(line)
 
     return groups
+
+
+def to_lines(text):
+    return text.strip().split("\n")
