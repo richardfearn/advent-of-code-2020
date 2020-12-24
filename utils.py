@@ -36,3 +36,7 @@ def group_lines(lines):
 
 def to_lines(text):
     return text.strip().split("\n")
+
+
+def non_blank_lines(text):
+    return [line for line in to_lines(text) if line]
