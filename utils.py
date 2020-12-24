@@ -40,3 +40,7 @@ def to_lines(text):
 
 def non_blank_lines(text):
     return [line for line in to_lines(text) if line]
+
+
+def chunks(lst, n):
+    return [lst[i:i + n] for i in range(0, len(lst), n)]
