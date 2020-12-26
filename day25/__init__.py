@@ -29,9 +29,6 @@ def transform(subject_number, loop_size):
 
 def parse(keys):
 
-    if isinstance(keys, str):
-        keys = to_lines(keys)
-
     if isinstance(keys[0], str):
         keys = [int(key) for key in keys]
 
