@@ -79,7 +79,8 @@ def process_rules(rules, skip=None):
             rules[num] = rule[0][1]  # just the character - no apostrophes
 
     # Repeatedly inline rules that don't refer to other rules
-    while True:
+    finished = False
+    while not finished:
 
         # Find a rule that just has a string on the RHS
         pos = None
@@ -102,6 +103,6 @@ def process_rules(rules, skip=None):
             rules.pop(pos)
 
         else:
-            break
+            finished = True
 
     return rules
