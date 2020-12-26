@@ -42,7 +42,8 @@ def find_ingredients_and_allergens(foods):
 
     remaining_allergens = set(all_allergens)
 
-    while True:
+    finished = False
+    while not finished:
 
         # Find an allergen that is definitely associated with only one ingredient
         result = None
@@ -71,6 +72,6 @@ def find_ingredients_and_allergens(foods):
                 food.allergens.discard(allergen)
 
         else:
-            break
+            finished = True
 
     return ingredient_allergens
